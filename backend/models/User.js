@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema(
       default: "trainee",
     },
 
-    // 🔥 ADD THIS
+    
     following: [
       {
         type: mongoose.Schema.Types.ObjectId,
