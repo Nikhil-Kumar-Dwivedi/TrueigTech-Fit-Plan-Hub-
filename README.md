@@ -116,8 +116,8 @@ All protected routes require an `Authorization: Bearer <token>` header.
 
 | Method | Endpoint                    | Description                           | Protected |
 | :----- | :-------------------------- | :------------------------------------ | :-------- |
-| `POST` | `/api/auth/signup`          | Register a new user (trainee/trainer) | No        |
-| `POST` | `/api/auth/login`           | Log in a user                         | No        |
+| `POST` | `/api/auth/signup`          | Register a new user (trainee/trainer) | Yes        |
+| `POST` | `/api/auth/login`           | Log in a user                         | YES        |
 | `POST` | `/api/trainer/course`       | Create a new fitness course           | Yes       |
 | `GET`  | `/api/trainer/my-courses`   | Get all courses for the logged-in trainer | Yes       |
 | `PUT`  | `/api/trainer/course/:id`   | Update a specific course              | Yes       |
