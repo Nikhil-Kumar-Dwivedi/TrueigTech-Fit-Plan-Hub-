@@ -1,8 +1,6 @@
 const Course = require("../models/Course");
 
-// =======================
-// CREATE COURSE
-// =======================
+
 exports.createCourse = async (req, res) => {
   try {
     if (req.user.role !== "trainer") {
@@ -26,9 +24,7 @@ exports.createCourse = async (req, res) => {
   }
 };
 
-// =======================
-// GET TRAINER COURSES
-// =======================
+
 exports.getMyCourses = async (req, res) => {
   try {
     const courses = await Course.find({ trainerId: req.user.id });
@@ -39,9 +35,7 @@ exports.getMyCourses = async (req, res) => {
   }
 };
 
-// =======================
-// UPDATE COURSE
-// =======================
+
 exports.updateCourse = async (req, res) => {
   try {
     if (req.user.role !== "trainer") {
@@ -53,7 +47,7 @@ exports.updateCourse = async (req, res) => {
     const updatedCourse = await Course.findOneAndUpdate(
       {
         _id: req.params.id,
-        trainerId: req.user.id, // ensures ownership
+        trainerId: req.user.id, 
       },
       {
         title,
@@ -77,9 +71,7 @@ exports.updateCourse = async (req, res) => {
   }
 };
 
-// =======================
-// DELETE COURSE
-// =======================
+
 exports.deleteCourse = async (req, res) => {
   try {
     if (req.user.role !== "trainer") {
