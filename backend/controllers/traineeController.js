@@ -2,17 +2,12 @@ const Course = require("../models/Course");
 const Subscription = require("../models/Subscription");
 const User = require("../models/User");
 
-// =======================
-// GET ALL COURSES
-// =======================
+
 exports.getAllCourses = async (req, res) => {
   const courses = await Course.find().populate("trainerId", "name");
   res.json(courses);
 };
 
-// =======================
-// SUBSCRIBE COURSE
-// =======================
 exports.subscribeCourse = async (req, res) => {
   try {
     if (req.user.role !== "trainee") {
@@ -46,9 +41,7 @@ exports.subscribeCourse = async (req, res) => {
   }
 };
 
-// =======================
-// GET MY SUBSCRIPTIONS (🔥 MISSING PIECE)
-// =======================
+
 exports.getMySubscriptions = async (req, res) => {
   const subscriptions = await Subscription.find({
     traineeId: req.user.id,
@@ -57,9 +50,7 @@ exports.getMySubscriptions = async (req, res) => {
   res.json(subscriptions);
 };
 
-// =======================
-// FOLLOW / UNFOLLOW TRAINER
-// =======================
+
 exports.toggleFollowTrainer = async (req, res) => {
   const { trainerId } = req.body;
 
@@ -81,9 +72,7 @@ exports.toggleFollowTrainer = async (req, res) => {
   res.json({ message: "Trainer followed" });
 };
 
-// =======================
-// GET FOLLOWING TRAINERS
-// =======================
+
 exports.getFollowing = async (req, res) => {
   const trainee = await User.findById(req.user.id).populate(
     "following",
